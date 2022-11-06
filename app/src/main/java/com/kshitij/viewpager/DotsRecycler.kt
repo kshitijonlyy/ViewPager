@@ -30,7 +30,7 @@ class DotsRecycler(var currentItem: Int) : RecyclerView.Adapter<DotsRecycler.Rec
     }
 
     override fun getItemCount(): Int {
-        return 4
+        return currentItem+1
     }
 
     fun updatePosition(position: Int) {

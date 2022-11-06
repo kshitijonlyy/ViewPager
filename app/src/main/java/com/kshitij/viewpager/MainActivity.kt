@@ -2,6 +2,7 @@ package com.kshitij.viewpager
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.kshitij.viewpager.databinding.ActivityMainBinding
@@ -25,7 +26,8 @@ class MainActivity : AppCompatActivity() {
         viewPagerRecycler = ViewPagerRecycler(layoutArray)
         binding.viewPager.adapter = viewPagerRecycler
         dotsAdapter = DotsRecycler(0)
-        layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, true)
+//        layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
+        layoutManager = GridLayoutManager(this, 4)
         binding.slidePosition.adapter = dotsAdapter
         binding.slidePosition.layoutManager = layoutManager
 

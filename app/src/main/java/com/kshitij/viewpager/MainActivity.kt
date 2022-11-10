@@ -25,9 +25,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         viewPagerRecycler = ViewPagerRecycler(layoutArray)
         binding.viewPager.adapter = viewPagerRecycler
-        dotsAdapter = DotsRecycler(0)
-//        layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
-        layoutManager = GridLayoutManager(this, 4)
+        dotsAdapter = DotsRecycler(this, layoutArray.size)
+        layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
+//        layoutManager = GridLayoutManager(this, 4)
         binding.slidePosition.adapter = dotsAdapter
         binding.slidePosition.layoutManager = layoutManager
 

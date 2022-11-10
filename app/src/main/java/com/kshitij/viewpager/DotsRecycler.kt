@@ -1,15 +1,16 @@
 package com.kshitij.viewpager
 
-import android.annotation.SuppressLint
-import android.text.Layout
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
-class DotsRecycler(var currentItem: Int) : RecyclerView.Adapter<DotsRecycler.RecyclerViewHolder>() {
+class DotsRecycler(var context: Context, var totalCount: Int) :
+    RecyclerView.Adapter<DotsRecycler.RecyclerViewHolder>() {
+    var currentItem = 0
 
     class RecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var imgDot: ImageView = view.findViewById(R.id.imgDot)
@@ -21,16 +22,20 @@ class DotsRecycler(var currentItem: Int) : RecyclerView.Adapter<DotsRecycler.Rec
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
-        if (position==currentItem){
-//            highlight
-        }
-        else{
-//            no change
+        if (position == currentItem) {
+            holder.imgDot.setImageDrawable(
+                ContextCompat.getDrawable(
+                    context,
+                    R.drawable.dot_purple
+                )
+            )
+        } else {
+            holder.imgDot.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.dot))
         }
     }
 
     override fun getItemCount(): Int {
-        return currentItem+1
+        return totalCount
     }
 
     fun updatePosition(position: Int) {
